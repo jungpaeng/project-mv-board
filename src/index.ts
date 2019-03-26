@@ -1,10 +1,10 @@
 import * as express from 'express'
 const app = express()
 
-app.get('/', (req: express.Request, res: express.Response) => {
-  res.send('Hello World!')
-})
+const PORT = 3000
 
-app.listen(3000, () => {
-  console.log('Example app listening on port 3000!')
-})
+const handleListening = () => {
+  console.log('Listening on port 3000!')
+}
+
+app.listen(PORT, handleListening)
