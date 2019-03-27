@@ -7,11 +7,16 @@
   "author": "jungpaeng <meis1541@naver.com>",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.4",
     "express": "^4.16.4",
+    "helmet": "^3.16.0",
     "morgan": "^1.9.1"
   },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.1",
     "@types/express": "^4.16.1",
+    "@types/helmet": "^0.0.43",
     "@types/morgan": "^1.7.35",
     "@types/node": "^11.11.7",
     "tslint": "^5.14.0",
