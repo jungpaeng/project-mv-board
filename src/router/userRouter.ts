@@ -4,7 +4,6 @@ import { user, userDetail, editProfile, changePassword } from '../controller/use
 
 const userRouter = express.Router()
 
-userRouter.get(route.user, user)
 userRouter.get(route.userDetail, userDetail)
 userRouter.get(route.editProfile, editProfile)
 userRouter.get(route.changePassword, changePassword)
