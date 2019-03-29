@@ -11,7 +11,8 @@
     "cookie-parser": "^1.4.4",
     "express": "^4.16.4",
     "helmet": "^3.16.0",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "pug": "^2.0.3"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.1",
@@ -19,6 +20,7 @@
     "@types/helmet": "^0.0.43",
     "@types/morgan": "^1.7.35",
     "@types/node": "^11.11.7",
+    "@types/pug": "^2.0.4",
     "tslint": "^5.14.0",
     "tslint-config-standard": "^8.0.1",
     "typescript": "^3.3.4000"
