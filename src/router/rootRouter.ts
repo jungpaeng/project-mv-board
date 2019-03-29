@@ -1,12 +1,14 @@
 import * as express from 'express'
 import route from '../constant/route'
+import { root, search } from '../controller/videoController'
+import { join, login, logout } from '../controller/userController'
 
 const rootRouter = express.Router()
 
-rootRouter.get(route.root, (_, res) => res.send(route.root))
-rootRouter.get(route.join, (_, res) => res.send(route.join))
-rootRouter.get(route.login, (_, res) => res.send(route.login))
-rootRouter.get(route.logout, (_, res) => res.send(route.logout))
-rootRouter.get(route.search, (_, res) => res.send(route.search))
+rootRouter.get(route.root, root)
+rootRouter.get(route.search, search)
+rootRouter.get(route.join, join)
+rootRouter.get(route.login, login)
+rootRouter.get(route.logout, logout)
 
 export default rootRouter
