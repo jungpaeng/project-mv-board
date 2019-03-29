@@ -5,6 +5,8 @@ import * as cookieParser from 'cookie-parser'
 import * as bodyParser from 'body-parser'
 import route from './constant/route'
 import rootRouter from './router/rootRouter'
+import userRouter from './router/userRouter'
+import videoRouter from './router/videoRouter'
 
 const app = express()
 
@@ -15,5 +17,7 @@ app.use(helmet())
 app.use(morgan('dev'))
 
 app.use(route.root, rootRouter)
+app.use(route.user, userRouter)
+app.use(route.video, videoRouter)
 
 export default app
