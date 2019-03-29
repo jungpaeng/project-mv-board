@@ -3,6 +3,9 @@ header.header
     a(href=route.root)
       i.fas.fa-video
   .header__column
+    form(action=route.search, method="get")
+      input(type="text", name="term", placeholder="Search by term...")
+  .header__column
     ul
       li
         a(href=route.join) Join
