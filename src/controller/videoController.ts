@@ -1,7 +1,8 @@
 import * as express from 'express'
+import { videos } from '../../tempDB'
 
 export const root = (req: express.Request, res: express.Response) =>
-  res.render('root', { pageTitle: 'Home' })
+  res.render('root', { pageTitle: 'Home', videos })
 
 export const search = (req: express.Request, res: express.Response) => {
   const { query: { term: searchingBy } } = req
