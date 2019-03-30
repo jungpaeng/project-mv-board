@@ -1,7 +1,10 @@
 import * as mongoose from 'mongoose'
+import * as dotenv from 'dotenv'
+
+dotenv.config()
 
 mongoose.connect(
-  'mongodb://localhost:27017/mv-board',
+  process.env.MONGO_URL as string,
   {
     useNewUrlParser: true,
     useFindAndModify: false
