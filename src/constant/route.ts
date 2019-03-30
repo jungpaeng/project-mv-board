@@ -22,12 +22,16 @@ const route = {
   logout: LOGOUT,
   search: SEARCH,
   user: USER,
-  userDetail: USER_DETAIL,
+  userDetail: (id?: string) => (
+    id ? `${USER}/${id}` : USER_DETAIL
+  ),
   editProfile: EDIT_PROFILE,
   changePassword: CHANGE_PASSWORD,
   video: VIDEO,
   upload: UPLOAD,
-  videoDetail: VIDEO_DETAIL,
+  videoDetail: (id?: string) => (
+    id ? `${VIDEO}/${id}` : VIDEO_DETAIL
+  ),
   editVideo: EDIT_VIDEO,
   deleteVideo: DELETE_VIDEO
 }
