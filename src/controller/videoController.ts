@@ -11,7 +11,8 @@ export const search = (req: express.Request, res: express.Response) => {
     'search',
     {
       pageTitle: 'Search',
-      searchingBy
+      searchingBy,
+      videos
     }
   )
 }
