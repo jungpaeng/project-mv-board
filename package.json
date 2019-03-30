@@ -26,6 +26,6 @@
     "typescript": "^3.3.4000"
   },
   "scripts": {
-    "start": "tsc && node dist"
+    "start": "tsc && node dist/src/index"
   }
 }
