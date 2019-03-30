@@ -1,4 +1,5 @@
 import * as express from 'express'
+import route from '../constant/route'
 import { videos } from '../../tempDB'
 
 export const root = (req: express.Request, res: express.Response) =>
@@ -20,8 +21,15 @@ export const search = (req: express.Request, res: express.Response) => {
 export const video = (req: express.Request, res: express.Response) =>
   res.render('video', { pageTitle: 'Video' })
 
-export const upload = (req: express.Request, res: express.Response) =>
+export const getUpload = (req: express.Request, res: express.Response) =>
   res.render('upload', { pageTitle: 'Upload' })
+
+export const postUpload = (req: express.Request, res: express.Response) => {
+  const { body: { file, title, description } } = req
+  // TODO: Upload and save video
+  res.redirect(route.videoDetail(videos[0].id))
+
+}
 
 export const videoDetail = (req: express.Request, res: express.Response) =>
   res.render('videoDetail', { pageTitle: 'Video Detail' })
