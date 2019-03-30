@@ -19,8 +19,12 @@ export const postJoin = (req: express.Request, res: express.Response) => {
   }
 }
 
-export const login = (req: express.Request, res: express.Response) =>
+export const getLogin = (req: express.Request, res: express.Response) =>
   res.render('login', { pageTitle: 'Login' })
+
+export const postLogin = (req: express.Request, res: express.Response) => {
+  res.redirect(route.root)
+}
 
 export const logout = (req: express.Request, res: express.Response) =>
   res.render('logout', { pageTitle: 'Logout' })
