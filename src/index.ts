@@ -1,6 +1,7 @@
 import app from './app'
 import * as dotenv from 'dotenv'
 import './db'
+import './model/video'
 
 dotenv.config()
 
