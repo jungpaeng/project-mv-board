@@ -1,8 +1,16 @@
 import * as express from 'express'
 import route from '../constant/route'
+import Video from '../model/video'
 
-export const root = (req: express.Request, res: express.Response) =>
-  res.render('root', { pageTitle: 'Home', videos: [] })
+export const root = async (req: express.Request, res: express.Response) => {
+  try {
+    const videos = await Video.find({})
+    res.render('root', { pageTitle: 'Home', videos })
+  } catch (error) {
+    console.error(error)
+    res.render('root', { pageTitle: 'Home', videos: [] })
+  }
+}
 
 export const search = (req: express.Request, res: express.Response) => {
   const { query: { term: searchingBy } } = req
