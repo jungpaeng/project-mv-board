@@ -1,5 +1,8 @@
 import * as express from 'express'
+import * as multer from 'multer'
 import route from './constant/route'
+
+const multerVideo = multer({ dest: 'videos/' })
 
 export const localsMiddleware = (req: express.Request, res: express.Response, next: express.NextFunction) => {
   res.locals.siteName = 'Movie Board'
@@ -10,3 +13,5 @@ export const localsMiddleware = (req: express.Request, res: express.Response, ne
   }
   next()
 }
+
+export const uploadVideoMiddleware = multerVideo.single('videoFile')
