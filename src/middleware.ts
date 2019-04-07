@@ -2,7 +2,7 @@ import * as express from 'express'
 import * as multer from 'multer'
 import route from './constant/route'
 
-const multerVideo = multer({ dest: 'videos/' })
+const multerVideo = multer({ dest: 'uploads/videos/' })
 
 export const localsMiddleware = (req: express.Request, res: express.Response, next: express.NextFunction) => {
   res.locals.siteName = 'Movie Board'
