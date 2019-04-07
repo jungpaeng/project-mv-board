@@ -1,7 +1,13 @@
 import * as express from 'express'
 import route from '../constant/route'
 import { root, search } from '../controller/videoController'
-import { getJoin, postJoin, getLogin, postLogin, logout } from '../controller/userController'
+import {
+  getJoin,
+  postJoin,
+  getLogin,
+  postLogin,
+  logout
+} from '../controller/userController'
 
 const rootRouter = express.Router()
 

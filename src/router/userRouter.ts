@@ -1,6 +1,10 @@
 import * as express from 'express'
 import route from '../constant/route'
-import { userDetail, editProfile, changePassword } from '../controller/userController'
+import {
+  userDetail,
+  editProfile,
+  changePassword
+} from '../controller/userController'
 
 const userRouter = express.Router()
 

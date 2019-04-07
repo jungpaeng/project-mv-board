@@ -3,13 +3,10 @@ import * as dotenv from 'dotenv'
 
 dotenv.config()
 
-mongoose.connect(
-  process.env.MONGO_URL as string,
-  {
-    useNewUrlParser: true,
-    useFindAndModify: false
-  }
-)
+mongoose.connect(process.env.MONGO_URL as string, {
+  useNewUrlParser: true,
+  useFindAndModify: false
+})
 
 const db = mongoose.connection
 
