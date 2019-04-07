@@ -50,8 +50,21 @@ export const postUpload = async (
   res.redirect(route.videoDetail(newVideo.id))
 }
 
-export const videoDetail = (req: express.Request, res: express.Response) =>
-  res.render('videoDetail', { pageTitle: 'Video Detail' })
+export const videoDetail = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  const {
+    params: { id }
+  } = req
+  try {
+    const video = await Video.findById(id)
+    res.render('videoDetail', { pageTitle: 'Video Detail', video })
+  } catch (error) {
+    console.error(error)
+    res.redirect(route.root)
+  }
+}
 
 export const editVideo = (req: express.Request, res: express.Response) =>
   res.render('editVideo', { pageTitle: 'Edit Video' })
