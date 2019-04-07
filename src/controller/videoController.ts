@@ -13,16 +13,15 @@ export const root = async (req: express.Request, res: express.Response) => {
 }
 
 export const search = (req: express.Request, res: express.Response) => {
-  const { query: { term: searchingBy } } = req
+  const {
+    query: { term: searchingBy }
+  } = req
 
-  res.render(
-    'search',
-    {
-      pageTitle: 'Search',
-      searchingBy,
-      videos: []
-    }
-  )
+  res.render('search', {
+    pageTitle: 'Search',
+    searchingBy,
+    videos: []
+  })
 }
 
 export const video = (req: express.Request, res: express.Response) =>
@@ -31,7 +30,10 @@ export const video = (req: express.Request, res: express.Response) =>
 export const getUpload = (req: express.Request, res: express.Response) =>
   res.render('upload', { pageTitle: 'Upload' })
 
-export const postUpload = async (req: express.Request, res: express.Response) => {
+export const postUpload = async (
+  req: express.Request,
+  res: express.Response
+) => {
   const {
     body: { title, description },
     file: { path }
@@ -46,7 +48,6 @@ export const postUpload = async (req: express.Request, res: express.Response) =>
   console.log(newVideo)
 
   res.redirect(route.videoDetail(newVideo.id))
-
 }
 
 export const videoDetail = (req: express.Request, res: express.Response) =>
