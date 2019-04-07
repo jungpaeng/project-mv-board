@@ -86,10 +86,21 @@ export const getEditVideo = async (
   }
 }
 
-export const postEditVideo = (req: express.Request, res: express.Response) => {
+export const postEditVideo = async (
+  req: express.Request,
+  res: express.Response
+) => {
   const {
-    params: { id }
+    params: { id },
+    body: { title, description }
   } = req
+  try {
+    await Video.findOneAndUpdate({ _id: id }, { title, description })
+    res.redirect(route.videoDetail(id))
+  } catch (error) {
+    console.error(error)
+    res.redirect(route.root)
+  }
 }
 
 export const deleteVideo = (req: express.Request, res: express.Response) =>
