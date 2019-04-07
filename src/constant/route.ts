@@ -28,7 +28,7 @@ const route = {
   video: VIDEO,
   upload: UPLOAD,
   videoDetail: (id?: string) => (id ? `${VIDEO}/${id}` : VIDEO_DETAIL),
-  editVideo: EDIT_VIDEO,
+  editVideo: (id?: string) => (id ? `${VIDEO}/${id}/edit` : EDIT_VIDEO),
   deleteVideo: DELETE_VIDEO
 }
 

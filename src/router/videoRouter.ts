@@ -4,17 +4,26 @@ import {
   getUpload,
   postUpload,
   videoDetail,
-  editVideo,
+  getEditVideo,
+  postEditVideo,
   deleteVideo
 } from '../controller/videoController'
 import { uploadVideoMiddleware } from '../middleware'
 
 const videoRouter = express.Router()
 
+// Video Upload
 videoRouter.get(route.upload, getUpload)
 videoRouter.post(route.upload, uploadVideoMiddleware, postUpload)
-videoRouter.get(route.editVideo, editVideo)
+
+// Video Edit
+videoRouter.get(route.editVideo(), getEditVideo)
+videoRouter.post(route.editVideo(), postEditVideo)
+
+// Video Delete
 videoRouter.get(route.deleteVideo, deleteVideo)
+
+// Video Detail
 videoRouter.get(route.videoDetail(), videoDetail)
 
 export default videoRouter
