@@ -7,7 +7,7 @@ const ENTRY_FILE = path.resolve(__dirname, 'assets', 'ts', 'main.ts')
 const OUTPUT_DIR = path.join(__dirname, 'static')
 
 const config = {
-  entry: ENTRY_FILE,
+  entry: ['@babel/polyfill', ENTRY_FILE],
   mode: MODE,
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json']
