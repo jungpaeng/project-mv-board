@@ -1,5 +1,5 @@
-import * as express from 'express'
-import * as multer from 'multer'
+import express from 'express'
+import multer from 'multer'
 import route from './constant/route'
 
 const multerVideo = multer({ dest: 'uploads/videos/' })
