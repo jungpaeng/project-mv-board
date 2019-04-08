@@ -50,9 +50,8 @@
     "typescript": "^3.3.4000"
   },
   "scripts": {
-    "start": "tsc && node dist",
-    "dev:server": "",
-    "dev:assets": "WEBPACK_ENV=development webpack",
+    "dev:server": "babel-node src/index.ts --extensions '.ts'",
+    "dev:assets": "WEBPACK_ENV=development webpack -w",
     "build:assets": "WEBPACK_ENV=production webpack"
   }
 }
