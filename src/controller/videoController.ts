@@ -1,10 +1,10 @@
 import * as express from 'express'
 import route from '../constant/route'
-import Video from '../model/video'
+import Video, { IVideoModel } from '../model/video'
 
 export const root = async (req: express.Request, res: express.Response) => {
   try {
-    const videos = await Video.find({})
+    const videos = await Video.find({}).sort({ '_id': -1 })
     res.render('root', { pageTitle: 'Home', videos })
   } catch (error) {
     console.error(error)
@@ -12,15 +12,27 @@ export const root = async (req: express.Request, res: express.Response) => {
   }
 }
 
-export const search = (req: express.Request, res: express.Response) => {
+export const search = async (req: express.Request, res: express.Response) => {
   const {
     query: { term: searchingBy }
   } = req
+  let videos: IVideoModel[] = []
+
+  try {
+    videos = await Video.find({
+      title: {
+        $regex: searchingBy,
+        $options: 'i'
+      }
+    })
+  } catch (error) {
+    console.error(error)
+  }
 
   res.render('search', {
     pageTitle: 'Search',
     searchingBy,
-    videos: []
+    videos
   })
 }
 

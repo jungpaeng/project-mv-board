@@ -5,7 +5,7 @@ interface IVideoComment {
   ref: 'Comment'
 }
 
-interface IVideoModel extends mongoose.Document {
+export interface IVideoModel extends mongoose.Document {
   fileUrl: string
   title: string
   description: string
