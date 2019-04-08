@@ -52,7 +52,7 @@
     "typescript": "^3.3.4000"
   },
   "scripts": {
-    "dev:server": "babel-node src/index.ts --extensions '.ts'",
+    "dev:server": "nodemon --exec babel-node src/index.ts --extensions '.ts' --delay 2 --ignore '.scss' --ignore 'static'",
     "dev:assets": "WEBPACK_ENV=development webpack -w",
     "build:assets": "WEBPACK_ENV=production webpack"
   }
