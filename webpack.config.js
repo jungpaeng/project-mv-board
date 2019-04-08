@@ -3,14 +3,23 @@ const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 
 const MODE = process.env.WEBPACK_ENV
-const ENTRY_FILE = path.resolve(__dirname, 'assets', 'js', 'main.js')
+const ENTRY_FILE = path.resolve(__dirname, 'assets', 'ts', 'main.ts')
 const OUTPUT_DIR = path.join(__dirname, 'static')
 
 const config = {
   entry: ENTRY_FILE,
   mode: MODE,
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.json']
+  },
   module: {
     rules: [
+      {
+        // Include ts, tsx, and js files.
+        test: /\.(tsx?)|(js)$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+      },
       {
         test: /\.(scss)$/,
         use: ExtractTextWebpackPlugin.extract([
