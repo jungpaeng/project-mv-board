@@ -1,21 +1,22 @@
 header.header
-  .header__column
-    a(href=route.root)
-      i.fas.fa-video
-  .header__column
-    form(action=route.search, method="get")
-      input(type="text", name="term", placeholder="Search by term...")
-  .header__column
-    ul
-      if user.isAuthenticated
-        li
-          a(href=`${route.video}${route.upload}`) Upload
-        li
-          a(href=route.userDetail(user.id)) Profile
-        li
-          a(href=route.logout) Log Out
-      else
-        li
-          a(href=route.join) Join
-        li
-          a(href=route.login) Log In
+  .header__wrapper
+    .header__column
+      a(href=route.root)
+        i.fas.fa-video
+    .header__column
+      form(action=route.search, method="get")
+        input(type="text", name="term", placeholder="Search by term...")
+    .header__column
+      ul
+        if user.isAuthenticated
+          li
+            a(href=`${route.video}${route.upload}`) Upload
+          li
+            a(href=route.userDetail(user.id)) Profile
+          li
+            a(href=route.logout) Log Out
+        else
+          li
+            a(href=route.join) Join
+          li
+            a(href=route.login) Log In

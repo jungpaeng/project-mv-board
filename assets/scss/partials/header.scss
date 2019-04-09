@@ -1,0 +1,55 @@
+.header {
+  background: $RED;
+  margin-bottom: 50px;
+
+  .header__wrapper {
+    padding: 5px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-content: center center;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    .header__column {
+      i {
+        color: white;
+        font-size: 30px;
+      }
+      &:nth-child(2) {
+        width: 100%;
+        justify-self: center;
+      }
+      &:last-child {
+        justify-self: end;
+      }
+
+      form {
+        width: 100%;
+        input {
+          width: 100%;
+          padding: 5px 10px;
+          border-radius: 5px;
+          font-size: 16px;
+          color: $BLACK;
+          font-weight: 600;
+
+          &::placeholder {
+            font-weight: 300;
+          }
+        }
+      }
+
+      ul {
+        display: flex;
+        color: white;
+        font-weight: 600;
+        text-transform: uppercase;
+        li:not(:last-child) {
+          margin-right: 15px;
+        }
+      }
+    }
+  }
+}
