@@ -12,7 +12,7 @@ export const localsMiddleware = (
   res.locals.siteName = 'Movie Board'
   res.locals.route = route
   res.locals.user = {
-    isAuthenticated: true,
+    isAuthenticated: false,
     id: 1
   }
   next()
