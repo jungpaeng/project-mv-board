@@ -20,16 +20,9 @@
       form {
         width: 100%;
         input {
-          width: 100%;
           padding: 5px 10px;
           border-radius: 2px;
           font-size: 16px;
-          color: $BLACK;
-          font-weight: 600;
-
-          &::placeholder {
-            font-weight: 300;
-          }
         }
       }
 
@@ -37,6 +30,7 @@
         display: flex;
         font-weight: 600;
         text-transform: uppercase;
+        color: white;
         li:not(:last-child) {
           margin-right: 15px;
         }

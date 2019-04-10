@@ -26,3 +26,18 @@ body {
     padding: 50px;
   }
 }
+
+button,
+input {
+  padding: 8px 10px;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 14px;
+  color: $BLACK;
+  font-weight: 600;
+
+  &::placeholder {
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.7);
+  }
+}
