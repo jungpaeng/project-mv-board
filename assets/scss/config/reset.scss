@@ -130,7 +130,7 @@ table {
 }
 
 a {
-  color: white;
+  color: inherit;
   text-decoration: none;
   outline: none;
 }
@@ -146,4 +146,8 @@ input {
   &:focus {
     outline: none;
   }
+}
+
+button {
+  outline: none;
 }
