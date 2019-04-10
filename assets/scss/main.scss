@@ -4,15 +4,25 @@ body {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   background: $GREY;
   color: $BLACK;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
 }
 
-main {
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  min-height: 70vh;
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: auto;
+
+  main {
+    flex: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px;
+  }
 }

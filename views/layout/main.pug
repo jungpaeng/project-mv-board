@@ -6,7 +6,8 @@ html
     link(rel="stylesheet", href="/static/styles.css")
   body
     include ../partial/header
-    main
-      block content
-    include ../partial/footer
+    .wrapper
+      main
+        block content
+      include ../partial/footer
     script(src="/static/main.js")
