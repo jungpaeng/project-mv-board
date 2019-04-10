@@ -10,7 +10,7 @@
       display: flex;
       flex: 1;
       i {
-        color: white;
+        color: $WHITE;
         font-size: 30px;
       }
       &:last-child {
@@ -30,7 +30,7 @@
         display: flex;
         font-weight: 600;
         text-transform: uppercase;
-        color: white;
+        color: $WHITE;
         li:not(:last-child) {
           margin-right: 15px;
         }
