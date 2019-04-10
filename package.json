@@ -1,9 +1,9 @@
 {
-  "name": "mv-board-server",
+  "name": "mv-board",
   "version": "1.0.0",
   "description": "Movie Upload Board with Vanilla and NodeJS",
   "main": "src/index.ts",
-  "repository": "https://github.com/jungpaeng/mv-board-server.git",
+  "repository": "https://github.com/jungpaeng/mv-board.git",
   "author": "jungpaeng <meis1541@naver.com>",
   "license": "MIT",
   "dependencies": {
