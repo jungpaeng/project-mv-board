@@ -3,6 +3,7 @@ import * as dotenv from 'dotenv'
 import './db'
 import './model/video'
 import './model/comment'
+import './model/user'
 
 dotenv.config()
 
