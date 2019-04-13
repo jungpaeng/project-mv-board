@@ -1,10 +1,14 @@
 import * as express from 'express'
 import route from '../constant/route'
+import User from '../model/user'
 
 export const getJoin = (req: express.Request, res: express.Response) =>
   res.render('join', { pageTitle: 'Join' })
 
-export const postJoin = (req: express.Request, res: express.Response) => {
+export const postJoin = async (
+  req: express.Request,
+  res: express.Response
+) => {
   const {
     body: { name, email, password, password2 }
   } = req
@@ -13,9 +17,17 @@ export const postJoin = (req: express.Request, res: express.Response) => {
     res.status(400)
     res.render('join', { pageTitle: 'Join' })
   } else {
-    // TODO: Register User
-    // TODO: Log user in
-    res.redirect(route.root)
+    try {
+      const user = await new User({
+        name,
+        email
+      })
+      await User.register(user, password)
+      res.redirect(route.root)
+    } catch (error) {
+      console.error(error)
+      res.redirect(route.join)
+    }
   }
 }
 
