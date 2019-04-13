@@ -16,9 +16,9 @@ import { localsMiddleware } from './middleware'
 import '../passport'
 
 const app = express()
-dotenv.config()
-
 const CookieStore = MongoStore(session)
+
+dotenv.config()
 
 app.use(helmet())
 app.set('view engine', 'pug')

@@ -1,5 +1,5 @@
-import app from './app'
 import * as dotenv from 'dotenv'
+import app from './app'
 import './db'
 import './model/video'
 import './model/comment'
