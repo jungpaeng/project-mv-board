@@ -15,6 +15,9 @@ const VIDEO_DETAIL = '/:id'
 const EDIT_VIDEO = '/:id/edit'
 const DELETE_VIDEO = '/:id/delete'
 
+const GITHUB = '/auth/github'
+const GITHUB_CALLBACK = '/auth/github/callback'
+
 const route = {
   root: ROOT,
   join: JOIN,
@@ -29,7 +32,9 @@ const route = {
   upload: UPLOAD,
   videoDetail: (id?: string) => (id ? `${VIDEO}/${id}` : VIDEO_DETAIL),
   editVideo: (id?: string) => (id ? `${VIDEO}/${id}/edit` : EDIT_VIDEO),
-  deleteVideo: (id?: string) => (id ? `${VIDEO}/${id}/delete` : DELETE_VIDEO)
+  deleteVideo: (id?: string) => (id ? `${VIDEO}/${id}/delete` : DELETE_VIDEO),
+  github: GITHUB,
+  githubCallback: GITHUB_CALLBACK
 }
 
 export default route
