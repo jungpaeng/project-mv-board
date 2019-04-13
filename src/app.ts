@@ -4,6 +4,7 @@ import helmet from 'helmet'
 import cookieParser from 'cookie-parser'
 import passport from 'passport'
 import * as bodyParser from 'body-parser'
+import * as dotenv from 'dotenv'
 import route from './constant/route'
 import rootRouter from './router/rootRouter'
 import userRouter from './router/userRouter'
@@ -12,6 +13,7 @@ import { localsMiddleware } from './middleware'
 import '../passport'
 
 const app = express()
+dotenv.config()
 
 app.use(helmet())
 app.set('view engine', 'pug')
