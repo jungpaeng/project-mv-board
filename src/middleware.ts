@@ -15,4 +15,28 @@ export const localsMiddleware = (
   next()
 }
 
+export const onlyPublic = (
+  req: express.Request,
+  res: express.Response,
+  next: express.NextFunction
+) => {
+  if (req.user) {
+    res.redirect(route.root)
+  } else {
+    next()
+  }
+}
+
+export const onlyPrivate = (
+  req: express.Request,
+  res: express.Response,
+  next: express.NextFunction
+) => {
+  if (req.user) {
+    next()
+  } else {
+    res.redirect(route.root)
+  }
+}
+
 export const uploadVideoMiddleware = multerVideo.single('videoFile')
