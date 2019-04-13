@@ -12,7 +12,7 @@ import {
 const rootRouter = express.Router()
 
 rootRouter.get(route.join, getJoin)
-rootRouter.post(route.join, postJoin)
+rootRouter.post(route.join, postJoin, postLogin)
 
 rootRouter.get(route.login, getLogin)
 rootRouter.post(route.login, postLogin)
