@@ -1,0 +1,24 @@
+.home-video {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .videoBLock:first-child,
+  .videoBLock:nth-child(2) {
+    width: 48%;
+  }
+
+  .videoBLock:nth-child(3),
+  .videoBLock:nth-child(4),
+  .videoBLock:nth-child(5) {
+    width: 32%;
+  }
+
+  .videoBLock:nth-child(n + 6) {
+    width: 19%;
+  }
+
+  .videoBLock:nth-child(n + 3) {
+    margin-top: 25px;
+  }
+}
