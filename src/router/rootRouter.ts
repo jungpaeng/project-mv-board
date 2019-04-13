@@ -1,4 +1,5 @@
 import * as express from 'express'
+import passport from 'passport'
 import route from '../constant/route'
 import { root, search } from '../controller/videoController'
 import {
@@ -6,7 +7,9 @@ import {
   postJoin,
   getLogin,
   postLogin,
-  logout
+  logout,
+  githubLogin,
+  postGithubLogin
 } from '../controller/userController'
 import { onlyPublic, onlyPrivate } from '../middleware'
 
@@ -21,5 +24,14 @@ rootRouter.post(route.login, onlyPublic, postLogin)
 rootRouter.get(route.root, root)
 rootRouter.get(route.search, search)
 rootRouter.get(route.logout, onlyPrivate, logout)
+
+rootRouter.get(route.github, githubLogin)
+rootRouter.get(
+  route.githubCallback,
+  passport.authenticate('github', {
+    failureRedirect: route.login
+  }),
+  postGithubLogin
+)
 
 export default rootRouter

@@ -1,5 +1,6 @@
 import * as express from 'express'
 import passport from 'passport'
+import { Profile } from 'passport-github'
 import route from '../constant/route'
 import User from '../model/user'
 
@@ -40,6 +41,21 @@ export const postLogin = passport.authenticate('local', {
   failureRedirect: route.login,
   successRedirect: route.root
 })
+
+export const githubLogin = passport.authenticate('github')
+
+export const githubLoginCallback = (
+  accessToken: string,
+  refreshToken: string,
+  profile: Profile,
+  cb: (error: any, user?: any) => void
+) => {
+  // TODO: Github Session
+}
+
+export const postGithubLogin = (req: express.Request, res: express.Response) => {
+  res.send(route.root)
+}
 
 export const logout = (req: express.Request, res: express.Response) => {
   req.logout()
