@@ -8,7 +8,6 @@ body {
   flex-direction: column;
   background: $GREY;
   color: $BLACK;
-  font-family: 'Open Sans', sans-serif;
   font-size: 14px;
 }
 
@@ -29,7 +28,8 @@ body {
 
 button,
 input:not([type="file"]),
-textarea {
+textarea,
+.file-upload {
   padding: 8px 10px;
   width: 100%;
   max-width: 320px;
@@ -39,6 +39,7 @@ textarea {
   color: $BLACK;
   font-weight: 600;
 
+  label,
   &::placeholder {
     font-weight: 300;
     color: rgba(0, 0, 0, 0.7);
