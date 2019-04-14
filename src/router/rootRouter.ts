@@ -35,6 +35,6 @@ rootRouter.get(
   postGithubLogin
 )
 
-rootRouter.get(route.me, userMe)
+rootRouter.get(route.me, onlyPrivate, userMe)
 
 export default rootRouter
