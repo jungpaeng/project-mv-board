@@ -9,7 +9,8 @@ import {
   postLogin,
   logout,
   githubLogin,
-  postGithubLogin
+  postGithubLogin,
+  userMe
 } from '../controller/userController'
 import { onlyPublic, onlyPrivate } from '../middleware'
 
@@ -33,5 +34,7 @@ rootRouter.get(
   }),
   postGithubLogin
 )
+
+rootRouter.get(route.me, userMe)
 
 export default rootRouter

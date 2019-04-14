@@ -93,6 +93,16 @@ export const logout = (req: express.Request, res: express.Response) => {
 export const user = (req: express.Request, res: express.Response) =>
   res.render('user', { pageTitle: 'User' })
 
+export const userMe = (req: express.Request, res: express.Response) => {
+  res.render(
+    'userDetail',
+    {
+      pageTitle: 'My Profile',
+      user: req.user
+    }
+  )
+}
+
 export const userDetail = (req: express.Request, res: express.Response) =>
   res.render('userDetail', { pageTitle: 'User Detail' })
 

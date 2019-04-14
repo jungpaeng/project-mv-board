@@ -8,6 +8,7 @@ const USER = '/user'
 const USER_DETAIL = '/:id'
 const EDIT_PROFILE = '/edit-profile'
 const CHANGE_PASSWORD = '/change-password'
+const ME = '/me'
 
 const VIDEO = '/video'
 const UPLOAD = '/upload'
@@ -28,6 +29,7 @@ const route = {
   userDetail: (id?: string) => (id ? `${USER}/${id}` : USER_DETAIL),
   editProfile: EDIT_PROFILE,
   changePassword: CHANGE_PASSWORD,
+  me: ME,
   video: VIDEO,
   upload: UPLOAD,
   videoDetail: (id?: string) => (id ? `${VIDEO}/${id}` : VIDEO_DETAIL),
