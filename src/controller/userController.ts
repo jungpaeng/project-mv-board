@@ -150,7 +150,7 @@ export const userDetail = async (req: express.Request, res: express.Response) =>
   const { params: { id } } = req
 
   try {
-    const user = await User.findById(id)
+    const user = await User.findById(id).populate('videos')
     res.render(
       'userDetail',
       {
