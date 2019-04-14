@@ -5,12 +5,18 @@ interface IVideoComment {
   ref: 'Comment'
 }
 
+interface IVideoCreator {
+  type: mongoose.Types.ObjectId
+  ref: 'Comment'
+}
+
 export interface IVideoModel extends mongoose.Document {
   fileUrl: string
   title: string
   description: string
   createdAt: Date
   comment: IVideoComment[]
+  creator: IVideoCreator
 }
 
 const VideoSchema: mongoose.Schema<{ title: string }> = new mongoose.Schema({
@@ -36,7 +42,11 @@ const VideoSchema: mongoose.Schema<{ title: string }> = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Comment'
     }
-  ]
+  ],
+  creator: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }
 })
 
 const model: mongoose.Model<IVideoModel> = mongoose.model('Video', VideoSchema)
