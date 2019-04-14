@@ -92,7 +92,33 @@ export const facebookLoginCallback: passportFacebook.VerifyFunction = async (
   profile,
   done
 ) => {
-  console.log(profile)
+  const {
+    id,
+    displayName,
+    emails
+  } = profile
+  const email = (emails || [{ value: '' }])[0].value
+
+  try {
+    const user = await User.findOne({ email })
+
+    if (user) {
+      user.facebookId = Number(id)
+      user.save()
+      return done(null, user)
+    }
+
+    const newUser = await User.create({
+      email,
+      name: displayName,
+      facebookId: id,
+      avatarUrl: `https://graph.facebook.com/${id}/picture?type=large`
+    })
+    return done(null, newUser)
+
+  } catch (error) {
+    return done(error)
+  }
 }
 
 export const postGithubLogin = (req: express.Request, res: express.Response) => {
