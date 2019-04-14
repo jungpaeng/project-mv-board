@@ -2,6 +2,7 @@ const videoContainer: HTMLElement = document.getElementById('jsVideoPlayer')
 const videoPlayer: HTMLVideoElement = document.querySelector('#jsVideoPlayer video')
 const playBtn: HTMLElement = document.getElementById('jsPlayButton')
 const volumeBtn: HTMLElement = document.getElementById('jsVolumeButton')
+const fullScreenBtn: HTMLElement = document.getElementById('jsFullScreen')
 
 const handlePlayClick = () => {
   if (videoPlayer.paused) {
@@ -23,10 +24,25 @@ const handleVolumeClick = () => {
   }
 }
 
+const toFullScreen = () => {
+  videoContainer.requestFullscreen()
+  fullScreenBtn.removeEventListener('click', toFullScreen)
+  fullScreenBtn.addEventListener('click', toOriginalScreen)
+  fullScreenBtn.innerHTML = '<i class="fas fa-compress"/>'
+}
+
+const toOriginalScreen = () => {
+  fullScreenBtn.removeEventListener('click', toOriginalScreen)
+  fullScreenBtn.addEventListener('click', toFullScreen)
+  fullScreenBtn.innerHTML = '<i class="fas fa-expand"/>'
+  document.exitFullscreen()
+}
+
 const init = () => {
   videoPlayer.addEventListener('click', handlePlayClick)
   playBtn.addEventListener('click', handlePlayClick)
   volumeBtn.addEventListener('click', handleVolumeClick)
+  fullScreenBtn.addEventListener('click', toFullScreen)
 }
 
 if (videoContainer) {
