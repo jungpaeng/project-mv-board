@@ -183,7 +183,7 @@ export const postEditProfile = async (req: express.Request, res: express.Respons
     )
     res.redirect(route.me)
   } catch (error) {
-    res.render('editProfile', { pageTitle: 'Edit Profile' })
+    res.redirect(`${route.user}${route.editProfile}`)
   }
 }
 
