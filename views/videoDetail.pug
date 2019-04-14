@@ -1,9 +1,9 @@
 extends layout/main
+include mixin/videoPlayer
 
 block content
   .video-detail__container
-    .video__player
-      video(src=`/${video.fileUrl}`, controls=true)
+    +videoPlayer(video)
     .video__info
       if video.creator.id === (loggedUser || {}).id
         a(href=route.editVideo(video.id))
