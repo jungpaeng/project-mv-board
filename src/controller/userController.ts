@@ -103,8 +103,22 @@ export const userMe = (req: express.Request, res: express.Response) => {
   )
 }
 
-export const userDetail = (req: express.Request, res: express.Response) =>
-  res.render('userDetail', { pageTitle: 'User Detail' })
+export const userDetail = async (req: express.Request, res: express.Response) => {
+  const { params: { id } } = req
+
+  try {
+    const user = await User.findById(id)
+    res.render(
+      'userDetail',
+      {
+        pageTitle: 'User Detail',
+        user
+      }
+    )
+  } catch (error) {
+    res.redirect(route.root)
+  }
+}
 
 export const editProfile = (req: express.Request, res: express.Response) =>
   res.render('editProfile', { pageTitle: 'Edit Profile' })
