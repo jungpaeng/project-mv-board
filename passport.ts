@@ -10,8 +10,8 @@ const GithubStrategy = passportGithub.Strategy
 dotenv.config()
 
 passport.use(User.createStrategy())
-passport.use(
-  new GithubStrategy({
+passport.use(new GithubStrategy(
+  {
     clientID: process.env.GH_ID as string,
     clientSecret: process.env.GH_SECRET as string,
     callbackURL: `http://localhost:3000${route.githubCallback}`
