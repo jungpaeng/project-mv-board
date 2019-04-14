@@ -6,8 +6,8 @@ block content
       .file-upload
         label(for="avatar") Avatar
         input(type="file", id="avatar", name="avatar")
-      input(type="text", name="name", placeholder="Name", value=loggedUser.name)
-      input(type="text", name="email", placeholder="Email", value=loggedUser.email)
+      input(type="text", name="name", placeholder="Name", value=(loggedUser || {}).name)
+      input(type="text", name="email", placeholder="Email", value=(loggedUser || {}).email)
       input(type="submit", value="Update Profile")
     a.form-container__link(href=`${route.user}${route.changePassword}`)
       button Change Password
