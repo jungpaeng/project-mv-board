@@ -22,6 +22,6 @@ UserSchema.plugin(
   { usernameField: 'email' }
 )
 
-const model: mongoose.Model<IUserModel> = mongoose.model('User', UserSchema as mongoose.PassportLocalSchema)
+const model: mongoose.PassportLocalModel<IUserModel> = mongoose.model('User', UserSchema as mongoose.PassportLocalSchema)
 
 export default model
