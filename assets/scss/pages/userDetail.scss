@@ -1,0 +1,29 @@
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .user-profile__header {
+    .avatar {
+      width: 200px;
+      height: 200px;
+      border-radius: 100%;
+    }
+
+    .profile__username {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 22px;
+    }
+  }
+
+  .user-profile__btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    * {
+      margin-top: 15px;
+    }
+  }
+}
