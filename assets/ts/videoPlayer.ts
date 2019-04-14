@@ -1,7 +1,7 @@
 const videoContainer: HTMLElement = document.getElementById('jsVideoPlayer')
 const videoPlayer: HTMLVideoElement = document.querySelector('#jsVideoPlayer video')
 const playBtn: HTMLElement = document.getElementById('jsPlayButton')
-const volumnBtn: HTMLElement = document.getElementById('jsVolumnButton')
+const volumeBtn: HTMLElement = document.getElementById('jsVolumeButton')
 
 const handlePlayClick = () => {
   if (videoPlayer.paused) {
@@ -13,20 +13,20 @@ const handlePlayClick = () => {
   }
 }
 
-const handleVolumnClick = () => {
+const handleVolumeClick = () => {
   if (videoPlayer.muted) {
     videoPlayer.muted = false
-    volumnBtn.innerHTML = '<i class="fas fa-volume-up"/>'
+    volumeBtn.innerHTML = '<i class="fas fa-volume-up"/>'
   } else {
     videoPlayer.muted = true
-    volumnBtn.innerHTML = '<i class="fas fa-volume-mute"/>'
+    volumeBtn.innerHTML = '<i class="fas fa-volume-mute"/>'
   }
 }
 
 const init = () => {
   videoPlayer.addEventListener('click', handlePlayClick)
   playBtn.addEventListener('click', handlePlayClick)
-  volumnBtn.addEventListener('click', handleVolumnClick)
+  volumeBtn.addEventListener('click', handleVolumeClick)
 }
 
 if (videoContainer) {
