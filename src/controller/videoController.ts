@@ -71,7 +71,8 @@ export const videoDetail = async (
     params: { id }
   } = req
   try {
-    const video = await Video.findById(id)
+    const video = await Video.findById(id).populate('creator')
+    console.log(video)
     res.render('videoDetail', { pageTitle: (video || { title: '' }).title, video })
   } catch (error) {
     console.error(error)
