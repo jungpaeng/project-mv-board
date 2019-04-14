@@ -10,7 +10,9 @@ import {
   logout,
   githubLogin,
   postGithubLogin,
-  userMe
+  userMe,
+  facebookLogin,
+  postFacebookLogin
 } from '../controller/userController'
 import { onlyPublic, onlyPrivate } from '../middleware'
 
@@ -33,6 +35,15 @@ rootRouter.get(
     failureRedirect: route.login
   }),
   postGithubLogin
+)
+
+rootRouter.get(route.facebook, facebookLogin)
+rootRouter.get(
+  route.facebookCallback,
+  passport.authenticate('facebook', {
+    failureRedirect: route.login
+  }),
+  postFacebookLogin
 )
 
 rootRouter.get(route.me, onlyPrivate, userMe)

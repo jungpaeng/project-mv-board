@@ -1,5 +1,6 @@
 import * as express from 'express'
 import passport from 'passport'
+import passportFacebook from 'passport-facebook'
 import { Profile } from 'passport-github'
 import route from '../constant/route'
 import User from '../model/user'
@@ -81,9 +82,25 @@ export const githubLoginCallback = async (
   }
 }
 
+export const facebookLogin = passport.authenticate('facebook', {
+  scope: ['public_profile', 'email']
+})
+
+export const facebookLoginCallback: passportFacebook.VerifyFunction = async (
+  accessToken,
+  refreshToken,
+  profile,
+  done
+) => {
+  console.log(profile)
+}
+
 export const postGithubLogin = (req: express.Request, res: express.Response) => {
   res.redirect(route.root)
 }
+
+export const postFacebookLogin = (req: express.Request, res: express.Response) =>
+  res.redirect(route.root)
 
 export const logout = (req: express.Request, res: express.Response) => {
   req.logout()
