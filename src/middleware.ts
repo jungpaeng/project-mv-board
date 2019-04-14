@@ -3,9 +3,9 @@ import multer from 'multer'
 import path from 'path'
 import route from './constant/route'
 
-const customStorage = multer.diskStorage({
+const customStorage = (uploadUrl: string) => multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'uploads/videos/')
+    cb(null, uploadUrl)
   },
   filename: (req, file, cb) => {
     const { originalname } = file
@@ -15,7 +15,8 @@ const customStorage = multer.diskStorage({
     cb(null, `${basename}-${Date.now()}${extension}`)
   }
 })
-const multerVideo = multer({ storage: customStorage })
+const multerVideo = multer({ storage: customStorage('uploads/videos/') })
+const multerAvatar = multer({ storage: customStorage('uploads/avatars/') })
 
 export const localsMiddleware = (
   req: express.Request,
@@ -53,3 +54,4 @@ export const onlyPrivate = (
 }
 
 export const uploadVideoMiddleware = multerVideo.single('videoFile')
+export const uploadAvatarMiddleware = multerAvatar.single('avatar')

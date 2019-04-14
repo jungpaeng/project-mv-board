@@ -6,12 +6,12 @@ import {
   postEditProfile,
   changePassword
 } from '../controller/userController'
-import { onlyPrivate } from '../middleware'
+import { onlyPrivate, uploadAvatarMiddleware } from '../middleware'
 
 const userRouter = express.Router()
 
 userRouter.get(route.editProfile, onlyPrivate, getEditProfile)
-userRouter.post(route.editProfile, onlyPrivate, postEditProfile)
+userRouter.post(route.editProfile, onlyPrivate, uploadAvatarMiddleware, postEditProfile)
 
 userRouter.get(route.changePassword, onlyPrivate, changePassword)
 userRouter.get(route.userDetail(), userDetail)

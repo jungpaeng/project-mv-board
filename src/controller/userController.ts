@@ -166,8 +166,26 @@ export const userDetail = async (req: express.Request, res: express.Response) =>
 export const getEditProfile = (req: express.Request, res: express.Response) =>
   res.render('editProfile', { pageTitle: 'Edit Profile' })
 
-export const postEditProfile = (req: express.Request, res: express.Response) =>
-  res.render('editProfile', { pageTitle: 'Edit Profile' })
+export const postEditProfile = async (req: express.Request, res: express.Response) => {
+  const {
+    body: { name, email },
+    file = { path: '' }
+  } = req
+
+  try {
+    await User.findByIdAndUpdate(
+      req.user.id,
+      {
+        name,
+        email,
+        avatarUrl: file.path || req.user.avatarUrl
+      }
+    )
+    res.redirect(route.me)
+  } catch (error) {
+    res.render('editProfile', { pageTitle: 'Edit Profile' })
+  }
+}
 
 export const changePassword = (req: express.Request, res: express.Response) =>
   res.render('changePassword', { pageTitle: 'Change Password' })

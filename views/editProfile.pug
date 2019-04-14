@@ -2,7 +2,7 @@ extends layout/main
 
 block content
   .form-container
-    form(action=`${route.user}${route.editProfile}`, method="post")
+    form(action=`${route.user}${route.editProfile}`, method="post", enctype="multipart/form-data")
       .file-upload
         label(for="avatar") Avatar
         input(type="file", id="avatar", name="avatar")
