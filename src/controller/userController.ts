@@ -163,7 +163,10 @@ export const userDetail = async (req: express.Request, res: express.Response) =>
   }
 }
 
-export const editProfile = (req: express.Request, res: express.Response) =>
+export const getEditProfile = (req: express.Request, res: express.Response) =>
+  res.render('editProfile', { pageTitle: 'Edit Profile' })
+
+export const postEditProfile = (req: express.Request, res: express.Response) =>
   res.render('editProfile', { pageTitle: 'Edit Profile' })
 
 export const changePassword = (req: express.Request, res: express.Response) =>
