@@ -25,7 +25,16 @@ const handleVolumeClick = () => {
 }
 
 const toFullScreen = () => {
-  videoContainer.requestFullscreen()
+  if (videoContainer['requestFullscreen']) {
+    videoContainer['requestFullscreen']()
+  } else if (videoContainer['mozRequestFullScreen']) {
+    videoContainer['mozRequestFullScreen']()
+  } else if (videoContainer['webkitRequestFullscreen']) {
+    videoContainer['webkitRequestFullscreen']()
+  } else if (videoContainer['msRequestFullscreen']) {
+    videoContainer['msRequestFullscreen']()
+  }
+
   fullScreenBtn.removeEventListener('click', toFullScreen)
   fullScreenBtn.addEventListener('click', toOriginalScreen)
   fullScreenBtn.innerHTML = '<i class="fas fa-compress"/>'
@@ -35,7 +44,16 @@ const toOriginalScreen = () => {
   fullScreenBtn.removeEventListener('click', toOriginalScreen)
   fullScreenBtn.addEventListener('click', toFullScreen)
   fullScreenBtn.innerHTML = '<i class="fas fa-expand"/>'
-  document.exitFullscreen()
+
+  if (document['exitFullscreen']) {
+    document['exitFullscreen']()
+  } else if (document['mozCancelFullScreen']) {
+    document['mozCancelFullScreen']()
+  } else if (document['webkitExitFullscreen']) {
+    document['webkitExitFullscreen']()
+  } else if (document['msExitFullscreen']) {
+    document['msExitFullscreen']()
+  }
 }
 
 const init = () => {
