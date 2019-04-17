@@ -82,12 +82,18 @@ const setTotalTime = () => {
   totalTime.innerHTML = totalTimeStr
 }
 
+const handleVideoEnded = () => {
+  videoPlayer.currentTime = 0
+  playBtn.innerHTML = '<i class="fas fa-play"/>'
+}
+
 const init = () => {
   videoPlayer.addEventListener('click', handlePlayClick)
   videoPlayer.addEventListener('loadedmetadata', setTotalTime)
   videoPlayer.addEventListener('loadedmetadata', () => {
     setInterval(getCurrentTime, 1000)
   })
+  videoPlayer.addEventListener('ended', handleVideoEnded)
   playBtn.addEventListener('click', handlePlayClick)
   volumeBtn.addEventListener('click', handleVolumeClick)
   fullScreenBtn.addEventListener('click', toFullScreen)
