@@ -1,10 +1,21 @@
-const videoContainer: HTMLElement = document.getElementById('jsVideoPlayer')
+const videoContainer = document.getElementById('jsVideoPlayer')
 const videoPlayer: HTMLVideoElement = document.querySelector('#jsVideoPlayer video')
-const playBtn: HTMLElement = document.getElementById('jsPlayButton')
-const volumeBtn: HTMLElement = document.getElementById('jsVolumeButton')
-const fullScreenBtn: HTMLElement = document.getElementById('jsFullScreen')
+const playBtn = document.getElementById('jsPlayButton')
+const volumeBtn = document.getElementById('jsVolumeButton')
+const fullScreenBtn = document.getElementById('jsFullScreen')
 const currentTime = document.getElementById('currentTime')
 const totalTime = document.getElementById('totalTime')
+const volumeRange = document.getElementById('jsVolume') as HTMLInputElement
+
+const setVolumeBtnElement = (volume: number) => {
+  if (volume >= 0.6) {
+    volumeBtn.innerHTML = '<i class="fas fa-volume-up"/>'
+  } else if (volume >= 0.1) {
+    volumeBtn.innerHTML = '<i class="fas fa-volume-down"/>'
+  } else {
+    volumeBtn.innerHTML = '<i class="fas fa-volume-mute"/>'
+  }
+}
 
 const handlePlayClick = () => {
   if (videoPlayer.paused) {
@@ -19,10 +30,12 @@ const handlePlayClick = () => {
 const handleVolumeClick = () => {
   if (videoPlayer.muted) {
     videoPlayer.muted = false
-    volumeBtn.innerHTML = '<i class="fas fa-volume-up"/>'
+    setVolumeBtnElement(videoPlayer.volume)
+    volumeRange.value = String(videoPlayer.volume)
   } else {
     videoPlayer.muted = true
     volumeBtn.innerHTML = '<i class="fas fa-volume-mute"/>'
+    volumeRange.value = '0'
   }
 }
 
@@ -87,7 +100,15 @@ const handleVideoEnded = () => {
   playBtn.innerHTML = '<i class="fas fa-play"/>'
 }
 
+const handleVolumeDrag = (event) => {
+  const { target: { value } } = event
+
+  videoPlayer.volume = value
+  setVolumeBtnElement(value)
+}
+
 const init = () => {
+  videoPlayer.volume = 0.5
   videoPlayer.addEventListener('click', handlePlayClick)
   videoPlayer.addEventListener('loadedmetadata', setTotalTime)
   videoPlayer.addEventListener('loadedmetadata', () => {
@@ -97,6 +118,7 @@ const init = () => {
   playBtn.addEventListener('click', handlePlayClick)
   volumeBtn.addEventListener('click', handleVolumeClick)
   fullScreenBtn.addEventListener('click', toFullScreen)
+  volumeRange.addEventListener('input', handleVolumeDrag)
 }
 
 if (videoContainer) {
