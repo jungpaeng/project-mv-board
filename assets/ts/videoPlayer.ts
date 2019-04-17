@@ -3,6 +3,8 @@ const videoPlayer: HTMLVideoElement = document.querySelector('#jsVideoPlayer vid
 const playBtn: HTMLElement = document.getElementById('jsPlayButton')
 const volumeBtn: HTMLElement = document.getElementById('jsVolumeButton')
 const fullScreenBtn: HTMLElement = document.getElementById('jsFullScreen')
+const currentTime = document.getElementById('currentTime')
+const totalTime = document.getElementById('totalTime')
 
 const handlePlayClick = () => {
   if (videoPlayer.paused) {
@@ -56,8 +58,36 @@ const toOriginalScreen = () => {
   }
 }
 
+const formatVideoTime = (totalSeconds: number) => {
+  let hours = String(Math.floor(totalSeconds / 3600))
+  let minutes = String(Math.floor((totalSeconds - Number(hours) * 3600) / 60))
+  let seconds = String(totalSeconds - Number(hours) * 3600 - Number(minutes) * 60)
+
+  if (Number(hours) < 10) { hours = `0${hours}` }
+  if (Number(minutes) < 10) { minutes = `0${minutes}` }
+  if (Number(seconds) < 10) { seconds = `0${seconds}` }
+
+  return `${hours}:${minutes}:${seconds}`
+}
+
+const getCurrentTime = () => {
+  const videoCurrentTime = Math.floor(videoPlayer.currentTime)
+  const currentTimeStr = formatVideoTime(videoCurrentTime)
+  currentTime.innerHTML = String(currentTimeStr)
+}
+
+const setTotalTime = () => {
+  const videoTotalTime = Math.floor(videoPlayer.duration)
+  const totalTimeStr = formatVideoTime(videoTotalTime)
+  totalTime.innerHTML = totalTimeStr
+}
+
 const init = () => {
   videoPlayer.addEventListener('click', handlePlayClick)
+  videoPlayer.addEventListener('loadedmetadata', setTotalTime)
+  videoPlayer.addEventListener('loadedmetadata', () => {
+    setInterval(getCurrentTime, 1000)
+  })
   playBtn.addEventListener('click', handlePlayClick)
   volumeBtn.addEventListener('click', handleVolumeClick)
   fullScreenBtn.addEventListener('click', toFullScreen)
